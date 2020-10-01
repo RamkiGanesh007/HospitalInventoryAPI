@@ -1,3 +1,4 @@
+const { Int32 } = require("mongodb")
 const mongoose=require("mongoose")
 
 
@@ -6,7 +7,7 @@ const ventilator = new mongoose.Schema(
     hid : 
     {
         type : String,
-        required : true
+        required : true,
     }
     ,
     name :
@@ -15,16 +16,29 @@ const ventilator = new mongoose.Schema(
         required : true
     }
     ,
-    ventilatorid : 
+    vid : 
     {
         type : String,
-        required : true
+        required : true,
+        unique : true
     },
     status : 
     {
         type : String,
         required : true,
         default : "available"
+    },
+    type : 
+    {
+        type : String,
+        required : false,
+        default : "not specified"
+    },
+    patient_hrs :
+    {
+        type : Number,
+        required : false,
+        default : 0
     }
 }
 )

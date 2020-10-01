@@ -1,5 +1,4 @@
 const express = require("express");
-const hospital = require("../models/hospital");
 const router = express.Router();
 const Hospital = require("../models/hospital")
 
@@ -13,7 +12,8 @@ router.route('/')
                 res.json(hospitals);
             })
             .catch((err) => {
-                res.send("Error at Retrieving from Hospitals Collection")
+                res.statusCode = 503;
+                res.send("Error at Retrieving from Hospitals")
             });
     })
     .post((req, res) => {
@@ -47,5 +47,20 @@ router.route('/:hid')
                 res.send("Error at Retrieving from Hospitals Collection")
             });
     })
+
+router.route('/:name')
+    .get((req, res) => {
+
+        Hospital.findOne({ name: req.params.name })
+            .then(hospital => {
+                res.statusCode = 200;
+                res.json(hospital);
+            })
+            .catch((err) => {
+                res.send("Error at Retrieving from Hospitals Collection")
+            });
+    })
+
+
 
 module.exports = router

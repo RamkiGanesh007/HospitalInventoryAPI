@@ -1,6 +1,7 @@
 const express=require("express")
 
-const mongoose=require("mongoose")
+const mongoose=require("mongoose");
+const ventilator = require("./models/ventilator");
 
 const app=express()
 
@@ -20,6 +21,10 @@ app.use(express.json());
 const hsprouter=require('./routes/hospitals');
 
 app.use('/hospitals',hsprouter);
+
+const venrouter=require('./routes/ventilators');
+
+app.use('/ventilators',venrouter);
 
 const router=express.Router();
 
