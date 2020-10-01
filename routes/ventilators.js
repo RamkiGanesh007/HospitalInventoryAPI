@@ -1,5 +1,4 @@
 const express = require("express");
-const ventilator = require("../models/ventilator");
 const router = express.Router();
 const Ventilators = require("../models/ventilator")
 
@@ -15,11 +14,8 @@ router.route('/')
                 res.statusCode = 503;
                 res.send("Error at Retrieving from Ventilators")
             });
-
     })
     .post((req,res)=>{
-        
-
         const ventilator = {
             hid: req.body.hid,
             name: req.body.name,
@@ -40,10 +36,10 @@ router.route('/')
             });
     });
 
-router.route('/:vid')
+router.route('/one/:vid')
     .get((req,res) => {
 
-        Ventilators.findOne({hid:req.params.vid})
+        Ventilators.findOne({vid:req.params.vid})
             .then(ventilator => {
                 res.statusCode = 200;
                 res.json(ventilator);
@@ -58,6 +54,7 @@ router.route('/:vid')
         .then(ventilator => {
             res.statusCode = 200;
             res.json(ventilator);
+            
         })
         .catch((err) => {
             res.statusCode =503;
@@ -78,4 +75,34 @@ router.route('/:vid')
             res.send("Error in Updating from Ventilators")
         });
     })
+
+router.route('/searchbystatus')
+    .post((req, res) => {
+        var nm=req.body.status
+        console.log(nm)
+        Ventilators.find({ status : nm })
+            .then(ventilator => {
+                res.statusCode = 200;
+                res.json(ventilator);
+            })
+            .catch((err) => {
+                res.send("Error at Retrieving from Hospitals Collection")
+            });
+    })
+
+    
+router.post("/ventilatorsearch", (req, res) => {
+    var stats=req.body.status
+    var nm =req.body.name
+    
+    Ventilators.find({ status : stats , name : nm })
+        .then(ventilator => {
+            res.statusCode = 200;
+            res.json(ventilator);
+        })
+        .catch((err) => {
+            res.send("Error at Retrieving from Hospitals Collection")
+        });
+});
+
 module.exports = router

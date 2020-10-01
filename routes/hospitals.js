@@ -36,7 +36,7 @@ router.route('/')
     });
 
 router.route('/:hid')
-    .get((req, res) => {
+    .get((req, res) => {    
 
         Hospital.findOne({ hid: req.params.hid })
             .then(hospital => {
@@ -44,14 +44,15 @@ router.route('/:hid')
                 res.json(hospital);
             })
             .catch((err) => {
-                res.send("Error at Retrieving from Hospitals Collection")
+                res.send("Error at Retrieving from Hospitals Collection");
             });
     })
 
-router.route('/:name')
-    .get((req, res) => {
-
-        Hospital.findOne({ name: req.params.name })
+router.route('/searchbyname')
+    .post((req, res) => {
+        var nm=req.body.name
+        
+        Hospital.find({ name : nm })
             .then(hospital => {
                 res.statusCode = 200;
                 res.json(hospital);

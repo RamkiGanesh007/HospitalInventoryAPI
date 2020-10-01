@@ -26,6 +26,10 @@ const venrouter=require('./routes/ventilators');
 
 app.use('/ventilators',venrouter);
 
+const other=require('./routes/other');
+
+app.use('/other',other);
+
 const router=express.Router();
 
 app.listen(9000,() => {
