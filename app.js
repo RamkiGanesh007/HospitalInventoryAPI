@@ -4,27 +4,25 @@ const mongoose=require("mongoose")
 
 const app=express()
 
-const url = "mongodb://127.0.0.1:27017";
+const url = "mongodb://127.0.0.1:27017/HospitalInventory";
 
-mongoose.connect(url,{useNewUrlPrser:true})
+const conn=mongoose.connect(url,{
+    useNewUrlPrser:true,
+    useUnifiedTopology: true
+});
 
-const conn=mongoose.connection
+conn.then(() => {
+    console.log("Connection Success!!!");
+});
 
-conn.on('open',()=>
-{
-    console.log("Connection Success!!!")
-}
-)
+app.use(express.json());
 
-const hsprouter=require('./routes/hospitals')
+const hsprouter=require('./routes/hospitals');
 
-app.use('/hospitals',hsprouter)
+app.use('/hospitals',hsprouter);
 
-const router=express.Router()
+const router=express.Router();
 
-const dbName="hospitalinventory"
-
-app.listen(9000,()=>
-{
+app.listen(9000,() => {
     console.log("Server Started!!")
 })
