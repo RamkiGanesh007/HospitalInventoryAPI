@@ -1,0 +1,27 @@
+{
+  "name": "19bd5a0521_project_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamkiGanesh007/19BD5A0521_project_1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RamkiGanesh007/19BD5A0521_project_1/issues"
+  },
+  "homepage": "https://github.com/RamkiGanesh007/19BD5A0521_project_1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
