@@ -18,6 +18,7 @@
   "homepage": "https://github.com/RamkiGanesh007/19BD5A0521_project_1#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.7"
   },
