@@ -11,11 +11,11 @@ const connect = mongoose.connect(url, {
 
 connect.then(db => {
     Users.create({
-        username: "GaneshKumar007",
-        firstname: "Ganesh",
-        lastname: "Kumar",
-        email: "gk4309303@gmail.com",
-        password: "Kmit123$"
+        username: "gksaas",
+        firstname: "Gas",
+        lastname: "Kxx",
+        email: "gk123@gmail.com",
+        password: "Kmit123"
     }).then(resp => {
         console.log("User Created Successfully!");
         console.log({ user: resp });
