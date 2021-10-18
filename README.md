@@ -1,4 +1,4 @@
-# Hospital Inventory Management
+# Hospital Inventory Management (REST API using MongoDB)
 
 First Microproject 
 
